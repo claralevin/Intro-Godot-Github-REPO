@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxsfn2o0sg5ww"]
+
+[ext_resource type="PackedScene" uid="uid://doag88o3nwdf8" path="res://rock.tscn" id="1_ix8lw"]
+[ext_resource type="PackedScene" uid="uid://dg0vhc5rahttb" path="res://tree.tscn" id="1_p05m6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yintm"]
+sky_top_color = Color(0.803922, 0.454902, 0.54902, 1)
+sky_horizon_color = Color(0.70098, 0.613725, 0.637255, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.70098, 0.613725, 0.637255, 1)
+
+[sub_resource type="Sky" id="Sky_r0ppf"]
+sky_material = SubResource("ProceduralSkyMaterial_yintm")
+
+[sub_resource type="Environment" id="Environment_pfg01"]
+background_mode = 2
+sky = SubResource("Sky_r0ppf")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_swqth"]
+albedo_color = Color(0.639216, 0.996078, 0.329412, 1)
+
+[node name="forest" type="Node3D"]
+transform = Transform3D(10, 0.000179754, -6.09204e-06, -0.000179754, 10, 0.000299163, 6.09204e-06, -0.000299163, 10, 0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.0323918, -0.0481597, -0.0814335, 0, -0.0860742, 0.0509042, -0.0946085, -0.0164887, -0.0278809, 0, 0, 0)
+layers = 0
+light_color = Color(0.654902, 0.623529, 0.623529, 1)
+shadow_enabled = true
+directional_shadow_split_1 = 0.787
+directional_shadow_max_distance = 8192.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pfg01")
+
+[node name="Ground" type="CSGBox3D" parent="."]
+transform = Transform3D(1, -5.12958e-14, 0, -3.52114e-14, 1, 0, 5.68434e-14, 1.63709e-11, 1, -2.50303, -0.932934, -2.6385e-05)
+size = Vector3(100, 0.5, 100)
+material = SubResource("StandardMaterial3D_swqth")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.0969606, -0.00043442, -0.0244631, -0.000457046, 0.099999, 3.57244e-05, 0.0244627, 0.000146446, -0.0969616, -0.640732, 1.84754, -13.2466)
+fov = 48.6489
+
+[node name="rocks" type="Node3D" parent="."]
+transform = Transform3D(-0.0969606, -0.00043442, -0.0244631, -0.000457046, 0.099999, 3.57244e-05, 0.0244627, 0.000146446, -0.0969616, -0.640746, 2.74745, -10.2222)
+
+[node name="rock1" parent="rocks" instance=ExtResource("1_ix8lw")]
+transform = Transform3D(-9.70883, -0.603662, 2.31822, 0.0122275, 9.66467, 2.56789, -2.39549, 2.49596, -9.38252, -2.67783, -36.5793, -14.9295)
+
+[node name="rock2" parent="rocks" instance=ExtResource("1_ix8lw")]
+transform = Transform3D(-6.63203, 1.38079, 7.35592, 7.31492, 3.2755, 5.98022, -1.58369, 9.3469, -3.18236, 37.3952, -32.7452, -173.829)
+
+[node name="rock3" parent="rocks" instance=ExtResource("1_ix8lw")]
+transform = Transform3D(-0.580071, 2.60768, 9.63658, 9.98302, 0.202643, 0.546089, -0.0528782, 9.65189, -2.615, 9.71417, -37.2511, -62.7157)
+
+[node name="rock4" parent="rocks" instance=ExtResource("1_ix8lw")]
+transform = Transform3D(2.1927, 2.47213, 9.43826, 9.7352, -1.19518, -1.94865, 0.646305, 9.61562, -2.66873, 21.1465, -34.4258, -63.9454)
+
+[node name="tREES" type="Node3D" parent="."]
+transform = Transform3D(-0.0969606, -0.00043442, -0.0244631, -0.000457046, 0.099999, 3.57244e-05, 0.0244627, 0.000146446, -0.0969616, -0.640728, 1.74891, -10.2222)
+
+[node name="tree" parent="tREES" instance=ExtResource("1_p05m6")]
+transform = Transform3D(-9.69606, -0.0457046, 2.44627, -0.043442, 9.9999, 0.0146446, -2.44631, 0.00357244, -9.69616, 18.8923, -21.4511, -100.691)
+
+[node name="tree2" parent="tREES" instance=ExtResource("1_p05m6")]
+transform = Transform3D(-9.69606, -0.0457047, 2.44627, -0.043442, 9.9999, 0.0146447, -2.44632, 0.00357242, -9.69616, 66.0284, -20.3667, -81.8728)
+
+[node name="tree3" parent="tREES" instance=ExtResource("1_p05m6")]
+transform = Transform3D(-9.69606, -0.0457046, 2.44627, -0.043442, 9.9999, 0.0146446, -2.44632, 0.00357243, -9.69616, -55.3482, -21.2971, -62.6712)
+
+[node name="tree4" parent="tREES" instance=ExtResource("1_p05m6")]
+transform = Transform3D(-9.69606, -0.0457046, 2.44627, -0.043442, 9.9999, 0.0146446, -2.44632, 0.00357243, -9.69616, 21.5813, -20.9539, -43.262)
+
+[node name="tree5" parent="tREES" instance=ExtResource("1_p05m6")]
+transform = Transform3D(-9.69606, -0.0457047, 2.44627, -0.043442, 9.9999, 0.0146447, -2.44632, 0.00357242, -9.69616, -21.1679, -20.3811, -28.8667)
